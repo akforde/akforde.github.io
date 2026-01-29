@@ -7,7 +7,7 @@ I am based in Calgary, Alberta. I’m always eager to connect with people in the
 
 # Certificates
 CompTIA A+\
-ISC2 Certifiend in Cybersecurity\
+ISC2 Certified in Cybersecurity\
 IBM Ethical Hacking with Open Source Tools Professional Certificate\
 Google Cybersecurity Professional\
 Google Workspace Adminstrator\
