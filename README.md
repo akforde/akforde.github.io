@@ -6,10 +6,10 @@ I love solving problems, learning new skills, and figuring out how things work b
 I am based in Calgary, Alberta. I’m always eager to connect with people in the industry, exchange ideas, and take on new challenges.
 
 # Certificates
-CompTIA A+\
+[CompTIA A+](assets/CompTIA A+ Cert.pdf)\
 ISC2 Certified in Cybersecurity\
 IBM Ethical Hacking with Open Source Tools Professional Certificate\
-Google Cybersecurity Professional\
+[Google Cybersecurity Professional](assets/Google Cyber Security Cert.pdf) \
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals 
 
@@ -29,4 +29,4 @@ Expected graduation 2027
 [Operating Systems Project](https://github.com/akforde/akforde.github.io/tree/9b6c0052deb5d47642f476932473448488b1f1d4/Operating%20Systems%20Project) \
 Ethical Hacking\
 [Ethics in Technology](https://github.com/akforde/akforde.github.io/tree/6a79ff03146eba6a1e34af1b86b79c9e9aa80d3c/Ethics%20in%20Technology) \
-C++ Code Samples
+[C++ Code Samples](https://github.com/akforde/akforde.github.io/tree/7e1b9a87a553a3c231f33b5d7606abaf7d42c005/C%2B%2B%20Projects)
