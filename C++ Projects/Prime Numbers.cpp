@@ -1,6 +1,5 @@
 /* 
- Title: Assignment1Question5.cpp
- Description: Problem 5 of Assignment 1
+ Title: Prime Numbers.cpp
  Date: 2026-01-16
  Author: Amy Forde
  Version: 1.0
@@ -11,10 +10,6 @@ DOCUMENTATION
 
 Program Purpose: Calculate and display all the prime numbers from 1 to 10 000.
 		
-		
-Compile: g++ Assignment1Question5.cpp -o prob5
-Execution: ./prob5
-
 Classes: none
 Variables:
 	bool prime - if value is true, it is prime
@@ -70,4 +65,5 @@ int main() {
 	
 	return 0;
 	
+
 }
