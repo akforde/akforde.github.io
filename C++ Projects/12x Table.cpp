@@ -1,6 +1,5 @@
 /* 
- Title: Assignment1Question1.cpp
- Description: Problem 1 of Assignment 1
+ Title: 12x Table
  Date: 2026-01-14
  Author: Amy Forde
  Version: 1.0
@@ -11,9 +10,6 @@ DOCUMENTATION
 
 Program Purpose:
 		Generate a 12x table.
-		
-Compile: g++ Assignment1Question1.cpp -o prob1
-Execution: ./prob1
 
 Classes: none
 Variables:
@@ -84,3 +80,4 @@ using namespace std; //simplifies code as we don't need to type std:: before eac
 	
 
 	
+
