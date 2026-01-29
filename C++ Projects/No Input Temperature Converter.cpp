@@ -1,6 +1,5 @@
 /* 
- Title: Assignment1Question3.cpp
- Description: Problem 3 of Assignment 1
+ Title: No Input Temperature Converter
  Date: 2026-01-15
  Author: Amy Forde
  Version: 1.0
@@ -11,10 +10,6 @@ DOCUMENTATION
 
 Program Purpose: Generate a table that shows the conversions of C to F and F to C for 100 lines
 that increment by 5. No input is required.
-		
-		
-Compile: g++ Assignment1Question3.cpp -o prob3
-Execution: ./prob3
 
 Classes: none
 Variables:
@@ -81,4 +76,5 @@ int main() {
     }
 
     return 0;
+
 }
