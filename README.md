@@ -13,7 +13,7 @@ Google Cybersecurity Professional\
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals
 
-<img src="(assets/A+-logo)" width="50" height="50"> <img src="(assets/MF-logo)" width="50" height="50"> <img src="(assets/isc2cc-logo)" width="50" height="50">
+<img src="([assets/A+-logo](https://github.com/akforde/akforde.github.io/blob/main/assets/A-logo.png?raw=true))" width="50" height="50"> <img src="(assets/MF-logo)" width="50" height="50"> <img src="(assets/isc2cc-logo)" width="50" height="50">
 
 # Education
 BA in Psychology and English \
