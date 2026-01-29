@@ -1,4 +1,5 @@
 # Non-Isolated Test Configuration Bash Script
+
 cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_v6.sh
 #!/bin/bash
 scheduler=$1
@@ -105,6 +106,7 @@ chmod +x ~/cloud_gaming_experiment/run_game_test_v6.sh
 
 
 # Isolated Test Configuration Bash Script
+
 cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_isolated.sh
 #!/bin/bash
 scheduler=$1
@@ -206,4 +208,3 @@ echo -e "\nTest completed. Results saved in: $output_dir"
 EOF
 chmod +x ~/cloud_gaming_experiment/run_game_test_isolated.sh
 
-# 
