@@ -28,5 +28,5 @@ Expected graduation 2027
 [Systems Design and Analysis Project](https://github.com/akforde/akforde.github.io/tree/f5905285ecc1b3574e5b7fac29b7b949087b7ee0/Systems%20Design%20and%20Analysis%20Project)\
 [Operating Systems Project](https://github.com/akforde/akforde.github.io/tree/9b6c0052deb5d47642f476932473448488b1f1d4/Operating%20Systems%20Project) \
 Ethical Hacking\
-[Ethics in Technology]()
+[Ethics in Technology](https://github.com/akforde/akforde.github.io/tree/6a79ff03146eba6a1e34af1b86b79c9e9aa80d3c/Ethics%20in%20Technology) \
 C++ Code Samples
