@@ -13,9 +13,9 @@ Google Cybersecurity Professional\
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals
 
-<img src="[image.png](https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/A%2B-logo)" width="50" height="50">
-<img src="[image.png](https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/MF-logo))" width="50" height="50">
-<img src="[image.png](https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/isc2cc-logo))" width="50" height="50">
+<img src="(https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/A%2B-logo)" width="50" height="50">
+<img src="(https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/MF-logo)" width="50" height="50">
+<img src="(https://github.com/akforde/akforde.github.io/blob/320e31806bfdcc780e80e2d8248bfdcc457f57c9/assets/isc2cc-logo)" width="50" height="50">
 
 # Education
 BA in Psychology and English \
