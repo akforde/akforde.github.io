@@ -1,6 +1,5 @@
 /* 
- Title: Assignment1Question4.cpp
- Description: Problem 4 of Assignment 1
+ Title: Interactive Help System
  Date: 2026-01-16
  Author: Amy Forde
  Version: 1.0
@@ -12,10 +11,6 @@ DOCUMENTATION
 Program Purpose: Create an interactive help system for C++ programming. The system will incorporate 
 a menu system that interacts with the user, and the appropriate help topic will be displayed, based 
 on an input selection.
-		
-		
-Compile: g++ Assignment1Question4.cpp -o prob4
-Execution: ./prob4
 
 Classes: none
 Variables:
@@ -80,5 +75,6 @@ int main() {
 	} while (select >= 1 && select <= 5);
 	
 	return 0;
+
 
 }
