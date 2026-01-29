@@ -26,6 +26,6 @@ Expected graduation 2027
 
 # Project Showcase
 Systems Design and Analysis\
-[Operating Systems Project](./Operating Systems Project)\
+[Operating Systems Project](/Operating Systems Project)\
 Ethical Hacking\
 C++ Code Samples
