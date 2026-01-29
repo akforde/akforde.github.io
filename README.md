@@ -26,6 +26,6 @@ Expected graduation 2027
 
 # Project Showcase
 Systems Design and Analysis\
-[Operating Systems Project](https://github.com/akforde/akforde.github.io/tree/9b6c0052deb5d47642f476932473448488b1f1d4/Operating%20Systems%20Project)
+[Operating Systems Project](https://github.com/akforde/akforde.github.io/tree/9b6c0052deb5d47642f476932473448488b1f1d4/Operating%20Systems%20Project) \
 Ethical Hacking\
 C++ Code Samples
