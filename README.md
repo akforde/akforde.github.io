@@ -13,7 +13,9 @@ Google Cybersecurity Professional\
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals
 
-<img src="(assets/A-logo.png)" width="50" height="50"> <img src="(assets/MF-logo)" width="50" height="50"> <img src="(assets/isc2cc-logo)" width="50" height="50">
+![A+](assets/A-logo.png)
+![ISC2 CC](assets/isc2cc-logo.png)
+![Microsoft](assets/MF-logo.png)
 
 # Education
 BA in Psychology and English \
