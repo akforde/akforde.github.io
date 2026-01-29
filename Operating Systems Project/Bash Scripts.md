@@ -1,6 +1,6 @@
 # Non-Isolated Test Configuration Bash Script
 
-cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_v6.sh
+``` cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_v6.sh
 #!/bin/bash
 scheduler=$1
 environment=$2
@@ -102,12 +102,12 @@ if(count>0) printf "Average: %.2f\n", total/count
 }' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
 echo -e "\nTest completed. Results saved in: $output_dir"
 EOF
-chmod +x ~/cloud_gaming_experiment/run_game_test_v6.sh
+chmod +x ~/cloud_gaming_experiment/run_game_test_v6.sh```
 
 
 # Isolated Test Configuration Bash Script
 
-cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_isolated.sh
+```cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_isolated.sh
 #!/bin/bash
 scheduler=$1
 isolation=$2 # 'none' or 'isolated'
@@ -206,5 +206,5 @@ if(count>0) printf "Average: %.2f\n", total/count
 }' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
 echo -e "\nTest completed. Results saved in: $output_dir"
 EOF
-chmod +x ~/cloud_gaming_experiment/run_game_test_isolated.sh
+chmod +x ~/cloud_gaming_experiment/run_game_test_isolated.sh``
 
