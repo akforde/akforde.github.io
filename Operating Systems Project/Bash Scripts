@@ -1,0 +1,209 @@
+# Non-Isolated Test Configuration Bash Script
+cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_v6.sh
+#!/bin/bash
+scheduler=$1
+environment=$2
+load_condition=$3
+DURATION=300
+timestamp=$(date +%Y%m%d_%H%M%S)
+output_dir=~/cloud_gaming_experiment/raw_data/$scheduler/$environment/$load_condition/$timestamp
+mkdir -p $output_dir
+echo "Starting test: $scheduler - $environment - $load_condition"
+echo "Test will run for 5 minutes"
+echo "Results will be saved in: $output_dir"
+# Start monitoring
+echo "Starting performance monitoring..."
+# System statistics monitoring
+vmstat 1 $DURATION > "$output_dir/system_metrics.log" &
+vmstat_pid=$!
+# Detailed process statistics
+pidstat 1 $DURATION > "$output_dir/process_metrics.log" &
+pidstat_pid=$!
+# Start game based on configuration
+case "$environment" in
+
+"native")
+if [ "$scheduler" = "sched_fifo" ]; then
+echo "Starting SuperTuxKart with SCHED_FIFO on bare metal..."
+# Launch game without sudo for SCHED_FIFO
+supertuxkart --no-graphics-cache --profile-tracks=1 &
+else
+echo "Starting SuperTuxKart with CFS on bare metal..."
+supertuxkart --no-graphics-cache --profile-tracks=1 &
+fi
+game_pid=$!
+;;
+"docker")
+xhost +local:docker
+if [ "$scheduler" = "sched_fifo" ]; then
+echo "Starting SuperTuxKart with SCHED_FIFO in Docker..."
+docker run --rm \
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+supertuxkart-test \
+supertuxkart --no-graphics-cache --profile-tracks=1 &
+else
+echo "Starting SuperTuxKart with CFS in Docker..."
+docker run --rm \
+-e DISPLAY=$DISPLAY \
+-v /tmp/.X11-unix:/tmp/.X11-unix \
+supertuxkart-test \
+supertuxkart --no-graphics-cache --profile-tracks=1 &
+fi
+;;
+esac
+# If load condition is with_load, start stress-ng
+if [ "$load_condition" = "with_load" ]; then
+stress-ng --cpu 2 --timeout ${DURATION}s &
+stress_pid=$!
+fi
+# Countdown timer
+for ((i=DURATION; i>0; i--)); do
+printf "\rTest running: %d seconds remaining..." $i
+sleep 1
+done
+echo -e "\nTest duration completed."
+echo "Cleaning up processes..."
+kill $vmstat_pid 2>/dev/null
+kill $pidstat_pid 2>/dev/null
+if [ "$load_condition" = "with_load" ]; then
+kill $stress_pid 2>/dev/null
+fi
+pkill supertuxkart
+docker stop $(docker ps -q) 2>/dev/null
+sleep 2
+# Generate summary
+echo -e "\n=== Test Summary ===" > "$output_dir/summary.txt"
+echo "Configuration: $scheduler - $environment - $load_condition" >> "$output_dir/summary.txt"
+echo "Date: $(date)" >> "$output_dir/summary.txt"
+echo -e "\nSystem Metrics:" >> "$output_dir/summary.txt"
+
+echo "CPU Usage (from vmstat):" >> "$output_dir/summary.txt"
+awk 'NR>2 {total_usr += $13; total_sys += $14; count++}
+END {
+printf "User CPU: %.2f%%\n", total_usr/count;
+printf "System CPU: %.2f%%\n", total_sys/count;
+printf "Total CPU: %.2f%%\n", (total_usr+total_sys)/count
+}' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
+echo -e "\nProcess Metrics (SuperTuxKart):" >> "$output_dir/summary.txt"
+grep "supertuxkart" "$output_dir/process_metrics.log" | \
+awk '{cpu+=$8; mem+=$12; count++}
+END {
+if(count>0) {
+printf "Average CPU Usage: %.2f%%\n", cpu/count;
+printf "Average Memory Usage: %.2f%%\n", mem/count
+}
+}' >> "$output_dir/summary.txt"
+echo -e "\nContext Switches (per second):" >> "$output_dir/summary.txt"
+awk 'NR>2 {total += $12; count++}
+END {
+if(count>0) printf "Average: %.2f\n", total/count
+}' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
+echo -e "\nTest completed. Results saved in: $output_dir"
+EOF
+chmod +x ~/cloud_gaming_experiment/run_game_test_v6.sh
+
+
+# Isolated Test Configuration Bash Script
+cat << 'EOF' > ~/cloud_gaming_experiment/run_game_test_isolated.sh
+#!/bin/bash
+scheduler=$1
+isolation=$2 # 'none' or 'isolated'
+load_condition=$3
+DURATION=300
+timestamp=$(date +%Y%m%d_%H%M%S)
+output_dir=~/cloud_gaming_experiment/raw_data/$scheduler/$isolation/$load_condition/$timestamp
+mkdir -p $output_dir
+echo "Starting test: $scheduler - $isolation - $load_condition"
+# Create cgroup
+if [ "$isolation" = "isolated" ]; then
+# Create cgroup and set limits
+sudo cgcreate -g cpu,memory:/game_group
+# Limit to 50% of CPU resources
+sudo cgset -r cpu.shares=512 game_group
+# Limit memory to 2GB
+sudo cgset -r memory.limit_in_bytes=2G game_group
+echo "Resource isolation enabled: CPU shares=512, Memory=2GB"
+fi
+vmstat 1 $DURATION > "$output_dir/system_metrics.log" &
+vmstat_pid=$!
+pidstat 1 $DURATION > "$output_dir/process_metrics.log" &
+pidstat_pid=$!
+
+# Start game with configurations applied
+if [ "$scheduler" = "sched_fifo" ]; then
+if [ "$isolation" = "isolated" ]; then
+echo "Starting SuperTuxKart with SCHED_FIFO in isolated environment..."
+sudo cgexec -g cpu,memory:/game_group chrt -f 99 supertuxkart --no-graphics-cache --profile-tracks=1 &
+else
+echo "Starting SuperTuxKart with SCHED_FIFO..."
+sudo chrt -f 99 supertuxkart --no-graphics-cache --profile-tracks=1 &
+fi
+else
+if [ "$isolation" = "isolated" ]; then
+echo "Starting SuperTuxKart with CFS in isolated environment..."
+sudo cgexec -g cpu,memory:/game_group supertuxkart --no-graphics-cache --profile-tracks=1 &
+else
+echo "Starting SuperTuxKart with CFS..."
+supertuxkart --no-graphics-cache --profile-tracks=1 &
+fi
+fi
+# If load condition is with_load, start stress-ng
+if [ "$load_condition" = "with_load" ]; then
+if [ "$isolation" = "isolated" ]; then
+# Run stress outside the game's cgroup
+stress-ng --cpu 2 --timeout ${DURATION}s &
+else
+stress-ng --cpu 2 --timeout ${DURATION}s &
+fi
+stress_pid=$!
+fi
+# Countdown timer in shell
+for ((i=DURATION; i>0; i--)); do
+printf "\rTest running: %d seconds remaining..." $i
+sleep 1
+done
+echo -e "\nTest duration completed."
+# Cleanup
+kill $vmstat_pid 2>/dev/null
+kill $pidstat_pid 2>/dev/null
+if [ "$load_condition" = "with_load" ]; then
+kill $stress_pid 2>/dev/null
+fi
+pkill supertuxkart
+# Remove cgroup if it was created
+if [ "$isolation" = "isolated" ]; then
+sudo cgdelete cpu,memory:/game_group
+fi
+# Generate results summary
+echo -e "\n=== Test Summary ===" > "$output_dir/summary.txt"
+echo "Configuration: $scheduler - $isolation - $load_condition" >> "$output_dir/summary.txt"
+echo "Date: $(date)" >> "$output_dir/summary.txt"
+echo -e "\nSystem Metrics:" >> "$output_dir/summary.txt"
+echo "CPU Usage (from vmstat):" >> "$output_dir/summary.txt"
+awk 'NR>2 {total_usr += $13; total_sys += $14; count++}
+END {
+printf "User CPU: %.2f%%\n", total_usr/count;
+printf "System CPU: %.2f%%\n", total_sys/count;
+
+printf "Total CPU: %.2f%%\n", (total_usr+total_sys)/count
+}' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
+echo -e "\nProcess Metrics (SuperTuxKart):" >> "$output_dir/summary.txt"
+grep "supertuxkart" "$output_dir/process_metrics.log" | \
+awk '{cpu+=$8; mem+=$12; count++}
+END {
+if(count>0) {
+printf "Average CPU Usage: %.2f%%\n", cpu/count;
+printf "Average Memory Usage: %.2f%%\n", mem/count
+}
+}' >> "$output_dir/summary.txt"
+echo -e "\nContext Switches (per second):" >> "$output_dir/summary.txt"
+awk 'NR>2 {total += $12; count++}
+END {
+if(count>0) printf "Average: %.2f\n", total/count
+}' "$output_dir/system_metrics.log" >> "$output_dir/summary.txt"
+echo -e "\nTest completed. Results saved in: $output_dir"
+EOF
+chmod +x ~/cloud_gaming_experiment/run_game_test_isolated.sh
+
+# 
