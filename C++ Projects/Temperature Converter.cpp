@@ -1,6 +1,5 @@
 /* 
- Title: Assignment1Question2.cpp
- Description: Problem 2 of Assignment 1
+ Title: Temperature Converter
  Date: 2026-01-15
  Author: Amy Forde
  Version: 1.0
@@ -13,9 +12,6 @@ Program Purpose: The program will accept as input a temperature and whether that
 Fahrenheit or Celsius. It will then convert F to C or C to F and print the answer to the screen.
 The program will ask if another conversion is desired, loop if it is and end if it is not.
 		
-		
-Compile: g++ Assignment1Question2.cpp -o prob2
-Execution: ./prob2
 
 Classes: none
 Variables:
@@ -119,4 +115,5 @@ using namespace std; //simplifies code as we don't need to type std:: before eac
 	return 0;
 		
 	}
+
 
