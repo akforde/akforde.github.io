@@ -11,7 +11,7 @@ ISC2 Certifiend in Cybersecurity\
 IBM Ethical Hacking with Open Source Tools Professional Certificate\
 Google Cybersecurity Professional\
 Google Workspace Adminstrator\
-Microsoft 365 Fundamentals
+Microsoft 365 Fundamentals 
 
 ![A+](assets/A-logo.png)
 ![ISC2 CC](assets/isc2cc-logo.png)
