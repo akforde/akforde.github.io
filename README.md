@@ -6,10 +6,10 @@ I love solving problems, learning new skills, and figuring out how things work b
 I am based in Calgary, Alberta. I’m always eager to connect with people in the industry, exchange ideas, and take on new challenges.
 
 # Certificates
-[CompTIA A+](assets/CompTIA A+ Cert.pdf)\
+[CompTIA A+](https://github.com/akforde/akforde.github.io/blob/ed736f0cc31f92dc484812854c4a3bfa0281e41b/assets/CompTIA%20A%2B%20Cert.pdf)\
 ISC2 Certified in Cybersecurity\
 IBM Ethical Hacking with Open Source Tools Professional Certificate\
-[Google Cybersecurity Professional](assets/Google Cyber Security Cert.pdf) \
+[Google Cybersecurity Professional](https://github.com/akforde/akforde.github.io/blob/7e1b9a87a553a3c231f33b5d7606abaf7d42c005/assets/Google%20Cyber%20Security%20Cert.pdf) \
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals 
 
