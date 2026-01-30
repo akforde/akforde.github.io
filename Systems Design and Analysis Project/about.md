@@ -1,2 +1,2 @@
 # System Design and Analysis of a Fictional Car-Sharing Information System
-(in progress)
+(Term Project in progress)
