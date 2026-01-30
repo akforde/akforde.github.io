@@ -8,7 +8,7 @@ I am based in Calgary, Alberta. I’m always eager to connect with people in the
 # Certificates
 [CompTIA A+](https://github.com/akforde/akforde.github.io/blob/ed736f0cc31f92dc484812854c4a3bfa0281e41b/assets/CompTIA%20A%2B%20Cert.pdf)\
 ISC2 Certified in Cybersecurity\
-IBM Ethical Hacking with Open Source Tools Professional Certificate\
+IBM Ethical Hacking with Open Source Tools Professional Certificate (_IN PROGRESS_) \
 [Google Cybersecurity Professional](https://github.com/akforde/akforde.github.io/blob/7e1b9a87a553a3c231f33b5d7606abaf7d42c005/assets/Google%20Cyber%20Security%20Cert.pdf) \
 Google Workspace Adminstrator\
 Microsoft 365 Fundamentals 
