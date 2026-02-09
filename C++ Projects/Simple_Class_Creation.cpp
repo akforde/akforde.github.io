@@ -1,6 +1,5 @@
 /* 
- Title: Assignment2Question1
- Description: 
+ Title: Simple Class Creation
  Date: 2026-01-30
  Author: Amy Forde
  Version: 1.0
@@ -9,11 +8,7 @@
 /*
 DOCUMENTATION
 
-Program Purpose:
-		
-		
-Compile: g++ Assignment2Question1.cpp -o q1
-Execution: ./q1
+Program Purpose: Create a parent class and child classes.
 
 Classes: 
 	Animal(parent)
@@ -170,4 +165,5 @@ int main() {
 
     return 0;
 }
+
 
